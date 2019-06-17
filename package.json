@@ -4,8 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "lint": "stylelint \"**/*.scss\" --fix"
+    "test": "mocha tests/ --recursive",
+    "start": "nodemon server.js",
+    "lint:css": "stylelint \"**/*.scss\" --fix",
+    "lint:js": "eslint"
   },
   "repository": {
     "type": "git",
@@ -18,18 +20,40 @@
   },
   "homepage": "https://github.com/rammfall/taxiapp#readme",
   "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/plugin-transform-async-to-generator": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "chai": "^4.2.0",
+    "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.13.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mocha": "^6.1.4",
     "prettier": "^1.17.0",
+    "source-map-loader": "^0.2.4",
     "stylelint": "^10.0.1",
+    "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-sass-guidelines": "^6.0.0",
     "stylelint-config-standard": "^18.3.0",
-    "stylelint-scss": "^3.6.1"
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.7.0",
+    "stylelint-scss": "^3.6.1",
+    "typescript": "^3.4.5",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -37,6 +61,45 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
-    "nodemon": "^1.19.0"
+    "nodemailer": "^6.2.1",
+    "nodemon": "^1.19.0",
+    "pg": "^7.11.0",
+    "request": "^2.88.0",
+    "sequelize": "^5.8.6",
+    "sequelize-cli": "^5.4.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/react",
+      "@babel/typescript",
+      [
+        "@babel/env",
+        {
+          "modules": false
+        }
+      ]
+    ],
+    "plugins": [
+      "react-hot-loader/babel",
+      "@babel/plugin-proposal-object-rest-spread",
+      "@babel/plugin-transform-async-to-generator",
+      "@babel/plugin-proposal-class-properties"
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          "@babel/react",
+          [
+            "@babel/env",
+            {
+              "modules": "commonjs"
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }

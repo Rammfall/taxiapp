@@ -1,9 +1,13 @@
 {
   "syntax": "scss",
   "plugins": ["stylelint-scss"],
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
   "extends": [
     "stylelint-config-standard",
-    "stylelint-config-sass-guidelines"
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-styled-components"
   ],
   "ignoreFiles": [
     "node_modules"

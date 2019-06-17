@@ -5,6 +5,13 @@
 App use Node.js(express)
 
 ## TODO
+
+## Technologies
+1. Node.js
+2. Express.js(with cors, body-parser, compression)
+3. ORM: Sequelize
+3. DB: PostgreSQL
+
 ### Environment
 1. Setting linters and prettier
 2. Setting runners and scripts in package.json
